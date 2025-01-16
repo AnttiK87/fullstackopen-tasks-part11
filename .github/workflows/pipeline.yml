@@ -1,0 +1,96 @@
+name: Deployment pipeline for blog application
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize]
+
+jobs:
+  simple_deployment_pipeline:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install dependencies
+        run: npm install
+      - name: Check style
+        run: npm run lint
+      - name: testfrontend
+        run: npm run test --workspace frontend
+      - name: build
+        run: npm run build:ui
+      - name: test backend
+        run: npm test
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+      - name: Run Playwright tests
+        run: npm run test:e2e
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30
+      - name: Deploy
+        if: ${{ github.event_name == 'push' && !contains(github.event.head_commit.message, '#skip') }}
+        env:
+          deploy_url: https://api.render.com/deploy/srv-${{ secrets.RENDER_SERVICE_ID }}?key=${{ secrets.RENDER_API_KEY }}
+        run: |
+          curl "$deploy_url"
+
+  tag_release:
+    needs: [simple_deployment_pipeline]
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: '0'
+      - name: Bump version and push tag
+        if: ${{ github.event_name == 'push' && !contains(github.event.head_commit.message, '#skip') }}
+        uses: anothrNick/github-tag-action@1.71.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEFAULT_BUMP: patch
+          WITH_V: false
+
+  discord_notifications:
+    needs: [simple_deployment_pipeline, tag_release]
+    if: always()
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Get latest tag
+        if: github.event_name == 'push' && needs.tag_release.result == 'success'
+        id: get_tag
+        run: echo "tag=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
+      - name: Test Success
+        uses: sarisia/actions-status-discord@v1.15.1
+        if: github.event_name == 'push' && needs.simple_deployment_pipeline.result == 'success'
+        with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          nodetail: true
+          title: A new version of Blog application deployed.
+
+          description: To new version `${{ env.tag }}` committed by ${{ github.actor }} click [here](https://full-stack-open-pokedex-oz9x.onrender.com) ✅
+          avatar_url: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
+          username: GitHub Actions Bot
+          color: 0x3bb143
+
+      - name: Test Failure
+        uses: sarisia/actions-status-discord@v1.15.1
+        if: needs.simple_deployment_pipeline.result == 'failure'
+        with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          nodetail: true
+          title: Test failed!
+          description: Commit [${{ github.sha }}](https://github.com/${{ github.repository }}/commit/${{ github.sha }}) by ${{ github.actor }} didn't pass all tests! ❌
+          avatar_url: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
+          username: GitHub Actions Bot
+          color: 0xFF0000

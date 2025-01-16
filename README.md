@@ -1,4 +1,4 @@
-# fullstackopen-tasks-part7
+# fullstackopen-tasks-part11
 
-Course Full stack open tasks for part 7
+Course Full stack open tasks for part 11
 Applications backend files

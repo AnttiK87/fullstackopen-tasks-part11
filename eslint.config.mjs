@@ -58,6 +58,12 @@ export default [
     },
   },
   {
-    ignores: ['dist/**', 'build/**', 'frontend/dist/**', 'frontend/build/**'],
+    ignores: [
+      'dist/**',
+      'build/**',
+      'frontend/dist/**',
+      'frontend/build/**',
+      'playwright-report/**',
+    ],
   },
 ]
