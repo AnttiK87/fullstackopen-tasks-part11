@@ -13,7 +13,7 @@ import Menu from './components/Menu'
 import Users from './components/Users'
 import OwnProfile from './components/OwnProfile'
 import Blog from './components/Blog'
-import Footer from './components/footer'
+import Footer from './components/Footer'
 //reducesrs
 import { initializeBlogs } from './reducers/blogReducer'
 import { setUser } from './reducers/userReducer'
