@@ -78,6 +78,7 @@ const loginResponse = async () => {
     .expect(200)
     .expect('Content-Type', /application\/json/)
 
+  console.log(`token is: ${response.body.token}`)
   return response.body.token
 }
 

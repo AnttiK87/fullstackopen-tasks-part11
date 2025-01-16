@@ -16,6 +16,7 @@ jobs:
       TEST_MONGODB_URI: ${{ secrets.TEST_MONGODB_URI }}
       API_URL: 'http://localhost:3003'
       PORT: '3003'
+      SECRET: ${{ secrets.SECRET }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
