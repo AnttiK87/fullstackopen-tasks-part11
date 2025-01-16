@@ -1,3 +1,0 @@
-GET http://localhost:3003/api/blogs/
-
-#to show specific add id to the end of url
