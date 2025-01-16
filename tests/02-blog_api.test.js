@@ -152,6 +152,7 @@ describe('adding of a new blog', async () => {
 
   test('Adding the blog succeeds with valid data', async () => {
     const token = await helper.loginResponse()
+    console.log(`token is: ${token}`)
 
     const newBlog = {
       title: 'This blog is added to test adding new blog',
@@ -405,7 +406,7 @@ describe('updating likes of a blog', () => {
 })
 
 after(async () => {
-  //await User.deleteMany({})
-  //await Blog.deleteMany({})
+  await User.deleteMany({})
+  await Blog.deleteMany({})
   await mongoose.connection.close()
 })
