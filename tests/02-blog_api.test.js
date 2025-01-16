@@ -123,6 +123,7 @@ describe('viewing all of the blogs', () => {
 
 describe('id is formatted correctly', () => {
   test('every object has Id field named id', async () => {
+    console.log('näkyykö tämä githubissa?')
     const response = await api.get('/api/blogs')
 
     const allHaveId = response.body.every((blog) => blog.id)
