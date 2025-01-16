@@ -23,7 +23,7 @@ jobs:
       - name: testfrontend
         run: npm run test --workspace frontend
       - name: build
-        run: npm run build:ui
+        run: npm run build:ui:deployment
       - name: test backend
         run: npm test
       - name: Install Playwright Browsers

@@ -3,4 +3,4 @@
 echo "Build script"
 
 npm install
-npm run build:ui
+npm run build:ui:deployment
