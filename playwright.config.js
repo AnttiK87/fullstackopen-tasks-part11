@@ -1,6 +1,6 @@
 // @ts-check
 const { defineConfig, devices } = require('@playwright/test')
-require('dotenv').config({ path: '.env.test' }) // Lataa ympäristömuuttujat testiä varten
+//require('dotenv').config({ path: '.env.test' }) // Lataa ympäristömuuttujat testiä varten
 
 module.exports = defineConfig({
   testDir: './E2E_tests',
