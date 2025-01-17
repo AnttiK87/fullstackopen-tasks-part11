@@ -4,7 +4,7 @@
 require('dotenv').config()
 
 // Set the server port
-const PORT = process.env.PORT || 10000
+const PORT = process.env.PORT
 
 // Set the MongoDB URI and use different URI for testing
 const MONGODB_URI =

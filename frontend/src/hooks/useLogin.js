@@ -3,10 +3,10 @@
 
 //dependencies
 import { useDispatch, useSelector } from 'react-redux'
-import loginService from '../services/login'
-import blogService from '../services/blogs'
+import loginService from '../services/login.js'
+import blogService from '../services/blogs.js'
 import { setUser, setUsername, setPassword } from '../reducers/userReducer.js'
-import { showMessage } from '../reducers/messageReducer'
+import { showMessage } from '../reducers/messageReducer.js'
 
 const useLogin = () => {
   const dispatch = useDispatch()

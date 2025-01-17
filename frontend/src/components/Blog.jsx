@@ -5,7 +5,10 @@ import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { like, remove } from '../reducers/blogReducer.js'
 import { useParams, useNavigate } from 'react-router-dom'
-import { createComment, initializeComments } from '../reducers/commentReducer'
+import {
+  createComment,
+  initializeComments,
+} from '../reducers/commentReducer.js'
 import { Form, Button } from 'react-bootstrap'
 
 const Blog = () => {

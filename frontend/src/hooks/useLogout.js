@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux'
 import { clearUser } from '../reducers/userReducer.js'
-import { showMessage } from '../reducers/messageReducer'
+import { showMessage } from '../reducers/messageReducer.js'
 import { useNavigate } from 'react-router-dom'
 
 // Function for handling user logging out
