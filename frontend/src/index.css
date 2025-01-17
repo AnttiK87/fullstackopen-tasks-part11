@@ -72,7 +72,7 @@ button {
   padding-bottom: 10px;
   border: 2px solid black;
   border-radius: 5px;
-  width: 400px;
+  width: 600px;
   text-align: center;
   margin-bottom: 5px;
 }
@@ -169,7 +169,6 @@ a:hover {
   }
 
   .blogStyle {
-    display: flex !important;
     padding-top: 10px;
     padding-bottom: 10px;
     border: 2px solid black;
