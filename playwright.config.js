@@ -27,9 +27,9 @@ module.exports = defineConfig({
       use: { ...devices['Desktop Safari'] },
     },
   ],
-  webServer: {
+  /*webServer: {
     command: 'npm run start:test',
     url: 'http://localhost:3003/',
     reuseExistingServer: !process.env.CI,
-  },
+  },*/
 })
