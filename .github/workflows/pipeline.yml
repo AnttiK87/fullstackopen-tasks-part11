@@ -34,9 +34,6 @@ jobs:
         run: npm test
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
-      - name: Kill process on port 3003
-        run: |
-          lsof -ti :3003 | xargs kill -9 || true
       - name: Run Playwright tests
         run: npm run test:e2e
       - uses: actions/upload-artifact@v4
