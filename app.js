@@ -1,4 +1,4 @@
-// main structure of this application
+// main structure of this application version 0.0.2
 
 //dependensies
 const config = require('./utils/config')
