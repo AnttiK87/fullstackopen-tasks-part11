@@ -11,36 +11,52 @@ import { useNavigate } from 'react-router-dom'
 const Menu = ({ /*props*/ setLoginVisible, setRegisterVisible }) => {
   /*TODO refactor style to .css file*/
   const containerStyle = {
-    backgroundColor: '#a5a58d',
+    backgroundColor: '#0077B6',
     padding: 20,
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
     width: '100%',
+    minHeight: 100,
   }
 
   const containerStyle2 = {
-    backgroundColor: '#a5a58d',
+    backgroundColor: '#0077B6',
     padding: 20,
     display: 'flex',
     justifyContent: 'flex-start',
     alignItems: 'center',
     width: '100%',
+    minHeight: 100,
+  }
+
+  const containerStyle3 = {
+    display: 'flex',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
   }
 
   const nameAndButtonStyle = {
     marginLeft: 'auto',
-    marginRight: 30,
+    marginRight: 0,
+    color: 'white',
   }
 
   const padding = {
-    padding: 10,
-    color: 'black',
+    padding: '0 10px 0 10px',
   }
 
   const noMargin = {
     margin: 0,
     marginLeft: 10,
+  }
+
+  const border = {
+    borderLeft: '1px solid white',
+  }
+
+  const marginRight = {
+    marginRight: 25,
   }
 
   //set navigate
@@ -53,29 +69,42 @@ const Menu = ({ /*props*/ setLoginVisible, setRegisterVisible }) => {
   //show login and register buttons on navbar if user is not logged in
   if (!user) {
     return (
-      <div style={containerStyle2}>
-        <button
-          name="openLogin"
-          className="button-as-link"
-          onClick={() => {
-            navigate('/')
-            setRegisterVisible(false)
-            setLoginVisible(true)
-          }}
-        >
-          Login
-        </button>
-        <button
-          className="button-as-link"
-          onClick={() => {
-            navigate('/')
-            setRegisterVisible(true)
-            setLoginVisible(false)
-          }}
-        >
-          Register
-        </button>
-      </div>
+      <Navbar style={containerStyle2} collapseOnSelect expand="lg">
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="nav-container2 mr-auto">
+            <Nav.Link href="#" as="span">
+              <button
+                style={padding}
+                name="openLogin"
+                className="button-as-link"
+                onClick={() => {
+                  navigate('/')
+                  setRegisterVisible(false)
+                  setLoginVisible(true)
+                }}
+              >
+                Login
+              </button>
+            </Nav.Link>
+            <div className="lines2">
+              <Nav.Link href="#" as="span">
+                <button
+                  style={padding}
+                  className="button-as-link lines"
+                  onClick={() => {
+                    navigate('/')
+                    setRegisterVisible(true)
+                    setLoginVisible(false)
+                  }}
+                >
+                  Register
+                </button>
+              </Nav.Link>
+            </div>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
     )
   }
 
@@ -86,29 +115,33 @@ const Menu = ({ /*props*/ setLoginVisible, setRegisterVisible }) => {
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="nav-container mr-auto">
           <Nav.Link href="#" as="span">
-            <Link style={padding} to="/">
+            <Link className="button-as-link" style={padding} to="/">
               Home
             </Link>
           </Nav.Link>
           <div className="lines">
             <Nav.Link href="#" as="span">
-              <Link style={padding} to="/users">
+              <Link className="button-as-link" style={padding} to="/users">
                 Users
               </Link>
             </Nav.Link>
           </div>
           <Nav.Link href="#" as="span">
-            <Link style={padding} to={`/users/${user.id}`}>
+            <Link
+              className="button-as-link"
+              style={padding}
+              to={`/users/${user.id}`}
+            >
               Own profile
             </Link>
           </Nav.Link>
           <Nav.Link style={nameAndButtonStyle} href="#" as="span">
-            <div>
-              {user.name} is logged in.
+            <div style={containerStyle3}>
+              <div style={marginRight}>{user.name} is logged in.</div>
               <Button
-                style={noMargin}
+                style={(noMargin, border)}
                 variant="primary"
-                className="Button"
+                className="button-as-link"
                 onClick={handleLogout}
                 type="submit"
               >

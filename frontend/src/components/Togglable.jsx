@@ -7,14 +7,10 @@ import { Button } from 'react-bootstrap'
 // togglable component, forwardRef allows parent components to access its fuctionalities
 const Togglable = forwardRef((props, ref) => {
   /*TODO refactor style to .css file*/
-  const cancelButton = {
-    marginLeft: 30,
-  }
-
   const marginTop = {
     marginTop: 20,
     marginLeft: 30,
-    width: 150,
+    minWidth: 150,
   }
 
   // state for visibility
@@ -42,7 +38,7 @@ const Togglable = forwardRef((props, ref) => {
       <div style={hideWhenVisible}>
         <Button
           variant="primary"
-          className="Button"
+          className="button-primary"
           style={marginTop}
           onClick={toggleVisibility}
         >
@@ -53,8 +49,7 @@ const Togglable = forwardRef((props, ref) => {
         {props.children}
         <Button
           variant="primary"
-          className="delButton"
-          style={cancelButton}
+          className="button-primary delButton cancelButton"
           onClick={toggleVisibility}
         >
           Cancel

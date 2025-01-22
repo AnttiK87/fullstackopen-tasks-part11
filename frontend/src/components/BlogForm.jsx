@@ -10,14 +10,7 @@ const BlogForm = () => {
   const marginBottom = {
     marginBottom: 10,
     marginLeft: 0,
-    width: 80,
   }
-
-  const margin = {
-    marginLeft: 30,
-    marginTop: 30,
-  }
-
   //set dispatch
   const dispatch = useDispatch()
 
@@ -40,45 +33,57 @@ const BlogForm = () => {
 
   // rendering the form
   return (
-    <div style={margin}>
+    <div className="marginBlogForm">
       <h3>Add new blog to the list</h3>
       <Form onSubmit={addBlog}>
-        <Form.Group className="form-group">
-          <Form.Label htmlFor="title">Title:</Form.Label>
-          <Form.Control
+        <div className="form__group">
+          <input
+            className="form__field"
             type="text"
             id="title"
             data-testid="title"
             name="title"
-            placeholder="title"
+            placeholder="TITLE"
+            required
           />
-        </Form.Group>
+          <label htmlFor="title" className="form__label">
+            Title
+          </label>
+        </div>
 
-        <Form.Group className="form-group">
-          <Form.Label htmlFor="author">Author:</Form.Label>
-          <Form.Control
+        <div className="form__group">
+          <input
+            className="form__field"
             type="text"
             id="author"
             data-testid="author"
             name="author"
-            placeholder="author"
+            placeholder="AUTHOR"
+            required
           />
-        </Form.Group>
-
-        <Form.Group className="form-group">
-          <Form.Label htmlFor="url">URL:</Form.Label>
-          <Form.Control
+          <label htmlFor="author" className="form__label">
+            Author
+          </label>
+        </div>
+        <div className="form__group">
+          <input
+            className="form__field"
             type="text"
             id="url"
             data-testid="url"
             name="url"
-            placeholder="url"
+            placeholder="URL"
+            required
           />
-        </Form.Group>
+          <label htmlFor="url" className="form__label">
+            URL
+          </label>
+        </div>
+
         <p></p>
         <Button
           variant="primary"
-          className="Button"
+          className="button-primary"
           style={marginBottom}
           type="submit"
         >

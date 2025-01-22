@@ -47,7 +47,9 @@ const likesToArray = async (page) => {
   let likesArray = []
 
   for (let i = 0; i < count; i++) {
-    const blogTitle = await blogElements.nth(i).textContent()
+    const textElement = await blogElements.nth(i).locator('.title')
+    const blogTitle = await textElement.textContent()
+
     console.log(`Blog title content: ${blogTitle}`)
 
     await page.getByRole('link', { name: `${blogTitle}` }).click()

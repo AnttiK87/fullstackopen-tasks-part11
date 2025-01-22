@@ -7,11 +7,6 @@ import PropTypes from 'prop-types'
 
 const RegisterForm = ({ /*props*/ setLoginVisible, setRegisterVisible }) => {
   /*TODO refactor style to .css file*/
-  const margin = {
-    marginLeft: 60,
-    marginTop: 30,
-  }
-
   const marginBottom = {
     marginBottom: 20,
   }
@@ -47,41 +42,58 @@ const RegisterForm = ({ /*props*/ setLoginVisible, setRegisterVisible }) => {
 
   // rendering registration form
   return (
-    <div style={margin}>
+    <div className="marginLogin">
       <h2 style={marginBottom}>Register new user</h2>
 
       <Form onSubmit={addUser}>
-        <Form.Group className="form-group">
-          <Form.Label htmlFor="username">Username: </Form.Label>
-          <Form.Control
+        <div className="form__group">
+          <input
+            className="form__field"
             id="username"
             data-testid="username"
             type="text"
             name="username"
-            placeholder="username"
+            placeholder="USERNAME"
+            required
+            minLength="3"
           />
-        </Form.Group>
-        <Form.Group className="form-group">
-          <Form.Label htmlFor="username">Name: </Form.Label>
-          <Form.Control
+          <label htmlFor="username" className="form__label">
+            Username
+          </label>
+        </div>
+        <div className="form__group">
+          <input
+            className="form__field"
             id="name"
             data-testid="name"
             type="text"
             name="name"
-            placeholder="name"
+            placeholder="NAME"
+            required
           />
-        </Form.Group>
-        <Form.Group style={marginBottom} className="form-group">
-          <Form.Label htmlFor="password">Password: </Form.Label>
-          <Form.Control
+          <label htmlFor="name" className="form__label">
+            Name
+          </label>
+        </div>
+        <div className="form__group">
+          <input
+            className="form__field"
             id="password"
             data-testid="password"
             type="password"
-            name="password"
-            placeholder="password"
+            placeholder="PASSWORD"
+            required
+            minLength="3"
           />
-        </Form.Group>
-        <Button variant="primary" className="Button" type="submit">
+          <label
+            style={marginBottom}
+            htmlFor="password"
+            className="form__label"
+          >
+            Password
+          </label>
+        </div>
+        <Button variant="primary" className="button-primary" type="submit">
           Register
         </Button>
       </Form>

@@ -3,10 +3,12 @@
 const Footer = () => {
   //style for footer
   const FooterStyle = {
-    backgroundColor: '#a5a58d',
+    backgroundColor: '#0077B6',
     padding: 25,
     paddingRight: 50,
-    textAlign: 'right', // Lisätty textAlign
+    textAlign: 'right',
+    color: 'white',
+    width: '100%',
   }
 
   //render footer

@@ -19,29 +19,8 @@ const Blog = () => {
     paddingBottom: 30,
   }
 
-  const padding = {
-    padding: 30,
-    paddingLeft: 50,
-    paddingBottom: 50,
-  }
-
-  const paddingLeft = {
-    paddingLeft: 30,
-    paddingTop: 15,
-  }
-
-  const width = {
-    width: 400,
-  }
-
-  const noMargin = {
+  const noMargin2 = {
     margin: 0,
-    marginLeft: 0,
-  }
-
-  const left = {
-    margin: 0,
-    marginLeft: 30,
   }
 
   //get blog id from url
@@ -97,7 +76,7 @@ const Blog = () => {
 
   // Show info if user is not logged in
   if (!user) {
-    return <div style={padding}>You are not logged in!</div>
+    return <div className="padding">You are not logged in!</div>
   }
 
   //Show loading screen if blog is not ready
@@ -131,13 +110,16 @@ const Blog = () => {
 
   // render the blog and comments comments could be as own component
   return (
-    <div className="test" style={padding}>
+    <div className="test padding">
       <h2>
         {blog.title} by author: {blog.author}
       </h2>
-      <div style={paddingLeft}>
+      <div className="paddingLeft">
         <div>
-          <b>Link to the blog: </b> <a href={blog.url}>{blog.url}</a>
+          <b>Link to the blog: </b>{' '}
+          <a className="blogUrl" href={blog.url}>
+            {blog.url}
+          </a>
         </div>
         <div className="likes">
           <b>Likes: </b> {blog.likes}
@@ -146,11 +128,10 @@ const Blog = () => {
           <b>Added by: </b> {blog.user.name}
         </div>
       </div>
-      <div className={'lastStyle'}>
+      <div className={'blogButtons'}>
         <Button
           variant="primary"
-          className="Button"
-          style={(noMargin, left)}
+          className="button-primary noMargin marginLeft"
           onClick={() => dispatch(like(blog))}
         >
           Like
@@ -159,7 +140,7 @@ const Blog = () => {
         <Button
           variant="primary"
           style={showDeleteButton}
-          className={'delButton buttonWidth'}
+          className="delBlogButton delButton button-primary"
           onClick={() => {
             deleteBlog()
           }}
@@ -168,22 +149,27 @@ const Blog = () => {
         </Button>
       </div>
       <h2> Comments</h2>
-      <div style={paddingLeft} className="paddingLeft">
+      <div className="paddingLeft">
         <Form onSubmit={addComment}>
-          <Form.Group style={width} className="form-group paddingLeft">
-            <Form.Control
-              style={noMargin}
+          <div className="form__group">
+            <input
+              className="form__field"
               type="text"
               id="comment"
               data-testid="comment"
               name="comment"
-              placeholder="write comment here"
+              placeholder="WRITE COMMENT HERE"
+              required
+              minLength="5"
             />
-          </Form.Group>
+            <label htmlFor="comment" className="form__label">
+              WRITE COMMENT HERE
+            </label>
+          </div>
           <Button
             variant="primary"
-            style={noMargin}
-            className="Button"
+            style={noMargin2}
+            className="button-primary"
             type="submit"
           >
             Add

@@ -3,6 +3,7 @@
 import PropTypes from 'prop-types'
 import LoginForm from './LoginForm'
 import RegisterForm from './RegisterForm'
+import TextTyper from './TextTyper'
 import { Button } from 'react-bootstrap'
 
 const LoginFormContainer = ({
@@ -13,15 +14,10 @@ const LoginFormContainer = ({
   setRegisterVisible,
 }) => {
   /*TODO refactor style to .css file*/
-  const styleText = {
-    padding: 100,
-    paddingTop: 50,
-    marginBottom: 0,
-  }
 
   const cancelButton = {
-    width: 100,
     marginBottom: 30,
+    marginTop: 10,
     marginLeft: 60,
   }
 
@@ -37,14 +33,7 @@ const LoginFormContainer = ({
   return (
     <div>
       <div style={hideWhenVisible}>
-        <p style={styleText}>
-          A blog application allows users to create, view, like, and comment on
-          blog posts. Users can log in, then manage their own posts while also
-          interacting with posts from others. The application displays a list of
-          blog entries, ordered by popularity (based on likes). Each blog post
-          includes a title, author, and link to original blog, as well as a
-          section for user comments.
-        </p>
+        <TextTyper />
       </div>
       <div style={showWhenVisible}>
         {loginVisible && <LoginForm />}
@@ -57,7 +46,7 @@ const LoginFormContainer = ({
         {loginVisible && (
           <Button
             variant="primary"
-            className="delButton"
+            className="button-primary delButton cancelButton"
             style={cancelButton}
             onClick={() => setLoginVisible(false)}
           >
@@ -67,7 +56,7 @@ const LoginFormContainer = ({
         {registerVisible && (
           <Button
             variant="primary"
-            className="delButton"
+            className="button-primary delButton cancelButton"
             style={cancelButton}
             onClick={() => setRegisterVisible(false)}
           >

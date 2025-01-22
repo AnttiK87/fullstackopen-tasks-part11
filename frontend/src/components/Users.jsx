@@ -15,12 +15,6 @@ const Users = () => {
     textAlign: 'center',
   }
 
-  const padding = {
-    padding: 30,
-    paddingLeft: 50,
-    paddingBottom: 50,
-  }
-
   //set dispatch and navigate
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -51,7 +45,7 @@ const Users = () => {
 
   //show info if user is not logged in
   if (!user) {
-    return <div style={padding}>You are not logged in!</div>
+    return <div className="padding">You are not logged in!</div>
   }
 
   //Show loading screen if users is not set yet
@@ -61,7 +55,7 @@ const Users = () => {
 
   /*rendering users screen and how many blogs that user has added sorted user with most added blogs to be first*/
   return (
-    <div style={padding}>
+    <div className="padding">
       <h3>Users</h3>
       <table>
         <thead>

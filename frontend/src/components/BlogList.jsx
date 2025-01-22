@@ -6,6 +6,7 @@ import BlogForm from './BlogForm'
 import { useSelector } from 'react-redux'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
+import { FaBook } from 'react-icons/fa'
 
 const BlogList = ({ /*props*/ blogFormRef }) => {
   /*TODO refactor style to .css file*/
@@ -22,6 +23,11 @@ const BlogList = ({ /*props*/ blogFormRef }) => {
     marginTop: 30,
     marginBottom: 20,
     paddingLeft: 30,
+  }
+
+  const iconStyle = {
+    fontSize: '25px',
+    marginRight: '15px',
   }
 
   //get blogs state
@@ -46,11 +52,24 @@ const BlogList = ({ /*props*/ blogFormRef }) => {
             .slice()
             .sort((a, b) => b.likes - a.likes)
             .map((blog) => (
-              <li className="blogStyle" key={blog.id}>
-                <Link to={`/blog/${blog.id}`}>
-                  <b>Title: </b> {blog.title}, <b>Author: </b> {blog.author}
-                </Link>
-              </li>
+              <Link
+                className="blogStyle"
+                key={blog.id}
+                to={`/blog/${blog.id}`}
+                style={{ textDecoration: 'none' }}
+              >
+                <li className="listItemStyle">
+                  <FaBook style={iconStyle} />
+                  <div>
+                    <div className="title">
+                      <b>Title:</b> {blog.title}
+                    </div>
+                    <div>
+                      <b>Author:</b> {blog.author}
+                    </div>
+                  </div>
+                </li>
+              </Link>
             ))
         )}
       </ul>

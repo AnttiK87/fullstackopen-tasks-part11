@@ -13,7 +13,7 @@
     "test": "cross-env NODE_ENV=test node --test",
     "test:e2e": "cross-env NODE_ENV=test playwright test",
     "test:report": "playwright show-report",
-    "build:ui": "@powershell if (Test-Path dist) { Remove-Item -Recurse -Force dist } && cd ./frontend && npm run build && @powershell Copy-Item dist -Recurse ../../fullstackopen-tasks-part11",
+    "build:ui": "@powershell if (Test-Path dist) { Remove-Item -Recurse -Force dist } && cd ./frontend && npm run build && @powershell Copy-Item dist -Recurse ../dist",
     "build:ui:deployment": "rm -rf dist && cd ./frontend && npm run build && cp -r dist $(dirname $(npm root))/dist",
     "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push",
     "lint": "eslint \"./**/*.{js,jsx}\"",
@@ -21,14 +21,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AnttiK87/fullstackopen-tasks-part5.git"
+    "url": "https://github.com/AnttiK87/fullstackopen-tasks-part11.git"
   },
   "author": "Antti Kortelainen",
   "license": "UNLICENSED",
-  "bugs": {
-    "url": "https://github.com/AnttiK87/fullstackopen-tasks-part5/issues"
-  },
-  "homepage": "https://github.com/AnttiK87/fullstackopen-tasks-part5#readme",
   "dependencies": {
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",

@@ -17,10 +17,6 @@ const LoginForm = () => {
   const { handleLogin } = useLogin()
 
   /*TODO refactor style to .css file*/
-  const margin = {
-    marginLeft: 60,
-    marginTop: 30,
-  }
 
   const marginBottom = {
     marginBottom: 20,
@@ -28,31 +24,43 @@ const LoginForm = () => {
 
   // rendering the form
   return (
-    <div style={margin}>
+    <div className="marginLogin">
       <h2 style={marginBottom}>Login</h2>
 
       <Form onSubmit={handleLogin}>
-        <Form.Group className="form-group">
-          <Form.Label htmlFor="username">Username: </Form.Label>
-          <Form.Control
+        <div className="form__group">
+          <input
+            className="form__field"
             id="username"
             data-testid="username"
             type="text"
             value={username}
             onChange={(event) => dispatch(setUsername(event.target.value))}
+            placeholder="USERNAME"
           />
-        </Form.Group>
-        <Form.Group style={marginBottom} className="form-group">
-          <Form.Label htmlFor="password">Password: </Form.Label>
-          <Form.Control
+          <label htmlFor="username" className="form__label">
+            Username
+          </label>
+        </div>
+        <div className="form__group">
+          <input
+            className="form__field"
             id="password"
             data-testid="password"
             type="password"
             value={password}
             onChange={(event) => dispatch(setPassword(event.target.value))}
+            placeholder="PASSWORD"
           />
-        </Form.Group>
-        <Button name="login" variant="primary" className="Button" type="submit">
+          <label
+            style={marginBottom}
+            htmlFor="username"
+            className="form__label"
+          >
+            Password{' '}
+          </label>
+        </div>
+        <Button name="login" className="button-primary" type="submit">
           Login
         </Button>
       </Form>

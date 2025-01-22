@@ -14,6 +14,7 @@ import Users from './components/Users'
 import OwnProfile from './components/OwnProfile'
 import Blog from './components/Blog'
 import Footer from './components/Footer'
+import { FaBook } from 'react-icons/fa'
 //reducesrs
 import { initializeBlogs } from './reducers/blogReducer'
 import { setUser } from './reducers/userReducer'
@@ -22,16 +23,7 @@ import { Routes, Route } from 'react-router-dom'
 
 const App = () => {
   //styles
-  const bottomBorder = {
-    borderBottom: '1px solid black', // Lainausmerkit arvolle
-    paddingBottom: 15,
-    paddingTop: 15,
-    paddingLeft: 30,
-    marginBottom: 0,
-  }
-
   const bcColor = {
-    backgroundColor: '#f5f0e1',
     display: 'flex',
     flexDirection: 'column',
     minHeight: '100%',
@@ -76,7 +68,10 @@ const App = () => {
         setRegisterVisible={setRegisterVisible}
       />
       <div className="main-content" style={bcColor}>
-        <h1 style={bottomBorder}>The List of Blogs</h1>
+        <div className="bottomBorder">
+          <FaBook className="iconStyle" />
+          <h1 className="header">The List of Blogs</h1>
+        </div>
         <Notification />
         <Routes>
           <Route

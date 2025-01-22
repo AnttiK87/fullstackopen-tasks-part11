@@ -1,30 +1,39 @@
 /*styles for blog application*/
 html,
 body {
+  font-family: 'Open Sans', sans-serif;
   min-height: 100%;
   margin: 0;
 }
 
+.blogUrl {
+  overflow-wrap: break-word;
+  display: inline-block;
+  max-width: 90%;
+}
+
 .container {
   min-height: 100vh;
+  min-width: 100% !important;
+  margin: 0px;
+  padding: 0px;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .main-content {
   flex-grow: 1;
   overflow-y: auto;
-}
-
-.footer {
-  margin-top: auto;
+  min-width: 80%;
+  margin: 40px 10% 20px 10%;
 }
 
 .notification {
   background: lightgrey;
   font-size: 20px;
   border-style: solid;
-  border-radius: 5px;
+  border-radius: 0px;
   padding: 10px;
   max-width: 90%;
   min-width: 90%;
@@ -33,6 +42,10 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+}
+
+.navbar-collapse {
+  margin-top: 20px;
 }
 
 .success {
@@ -56,37 +69,32 @@ label {
   padding-right: 10px;
 }
 
+.header {
+  margin: 0;
+}
+
+.iconStyle {
+  font-size: 55px;
+  margin-right: 15px;
+}
+
 input {
   flex: 1;
   padding: 2px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-button {
-  margin-left: 10px;
-}
-
-.blogStyle {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  border: 2px solid black;
-  border-radius: 5px;
-  width: 600px;
-  text-align: center;
-  margin-bottom: 5px;
+  border: 3px solid #000000;
+  border-radius: 0px;
 }
 
 .lastStyle {
   margin-bottom: 25px;
 }
 
-.delButton {
-  margin-left: 10px;
-  background-color: red;
-  color: white;
-  width: 80px;
-  border-color: black;
+.blogButtons {
+  display: flex;
+  flex-direction: column;
+  max-width: 120px;
+  gap: 10px;
+  margin-bottom: 25px;
 }
 
 a {
@@ -95,86 +103,194 @@ a {
 }
 
 a:hover {
-  color: #757a6f;
+  color: #004a72;
+}
+
+.blogStyle {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  padding: 10px;
+  margin: 0 0 10px 0;
+  transition: background-color 0.5s;
+  border: 2px solid black;
+  border-radius: 0px;
+  max-width: 50% !important;
+}
+
+.listStyle {
+  padding-left: 30px;
+  margin-bottom: 0;
+  padding-bottom: 30px;
+}
+
+.listItemStyle {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid white;
+  transition: background-color 0.2s;
+}
+
+.blogStyle:nth-child(odd) .listItemStyle {
+  border-bottom: 1px solid white;
+}
+
+.blogStyle:nth-child(even) .listItemStyle {
+  border-bottom: 1px solid black;
 }
 
 .blogStyle:nth-child(odd) {
-  background-color: #a5a58d;
+  background-color: #0077b6;
+  color: white !important;
 }
 
-.Button {
-  width: 100px;
-  margin-bottom: 10px;
-  margin-left: 0;
-  background-color: rgb(151, 151, 151);
-  border-color: black;
+.blogStyle:nth-child(even) {
+  background-color: #8bc3e1;
 }
 
-.Button:hover {
-  background-color: rgb(69, 69, 69);
-  border-color: black;
+.blogStyle:hover {
+  background-color: #f0f0f0;
+  cursor: pointer;
+  color: black !important;
 }
 
-.Button:active {
-  background-color: rgb(27, 27, 27) !important;
-  border-color: darkgray !important;
+.blogStyle:hover .listItemStyle {
+  border-bottom: 1px solid black;
 }
 
-.delButton:hover {
-  background-color: rgb(198, 1, 1);
-  border-color: black;
+.padding {
+  padding: 30px;
+  padding-left: 50px;
+  padding-bottom: 50px;
 }
 
-.delButton:active {
-  background-color: rgb(119, 0, 0) !important;
-  border-color: red !important;
+.paddingLeft {
+  padding-left: 30px;
+  padding-top: 20px;
 }
 
-.button-as-link {
-  background: none;
-  border: none;
-  padding: 0;
+.marginLeft {
+  margin: 0;
+  margin-left: 30px;
 }
 
-.button-as-link:hover {
-  color: #757a6f;
-  background: none;
+.bottomBorder {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid black;
+  padding-bottom: 15px;
+  padding-top: 15px;
+  padding-left: 30px;
+  margin-bottom: 0;
 }
 
-.buttonWidth {
-  width: 100px;
+.marginLogin {
+  margin-left: 30px;
+  margin-top: 30px;
+}
+
+.marginBlogForm {
+  margin-left: 30px;
+  margin-top: 30px;
+}
+
+.cancelButton {
+  margin-left: 30px !important;
 }
 
 @media (min-width: 990px) {
   .nav-container {
-    background-color: #a5a58d;
-    padding: 20;
+    background-color: #0077b6;
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    height: 50px;
+  }
+
+  .nav-container2 {
+    background-color: #0077b6;
+    display: flex;
+    align-items: center;
+    height: 50px;
+  }
+
+  .nav-link {
+    display: flex;
+    align-items: center;
+    height: 50px;
   }
 
   .lines {
-    border-left: 1px solid black;
-    border-right: 1px solid black;
+    border-left: 1px solid rgb(255, 255, 255);
+    border-right: 1px solid rgb(255, 255, 255);
+  }
+
+  .lines2 {
+    border-left: 1px solid rgb(255, 255, 255);
   }
 }
 
 @media (max-width: 990px) {
+  .main-content {
+    flex-grow: 1;
+    overflow-y: auto;
+    max-width: 90%;
+    margin: 0;
+  }
+
+  .marginLogin {
+    margin-left: 20px;
+  }
+
+  .marginBlogForm {
+    margin-left: 20px;
+    margin-top: 30px;
+  }
+
+  .cancelButton {
+    margin-left: 20px !important;
+  }
+
+  .delBlogButton {
+    margin-left: 0px !important;
+  }
+
   .container {
     margin: 0px;
-    min-width: 100%;
+    max-width: 80% !important;
     padding: 0px;
+  }
+
+  .padding {
+    padding: 10px;
+    padding-top: 30px;
+    padding-bottom: 50px;
+  }
+
+  .listStyle {
+    padding-left: 10px;
+  }
+
+  .bottomBorder {
+    padding-left: 5px;
+  }
+
+  .noMargin {
+    margin: 0;
+  }
+
+  .listItemStyle {
+    padding: 0;
   }
 
   .blogStyle {
     padding-top: 10px;
     padding-bottom: 10px;
     border: 2px solid black;
-    border-radius: 5px;
+    border-radius: 0px;
     max-width: 90% !important;
-    text-align: center;
     margin-bottom: 5px;
     padding: 10px;
   }
@@ -186,6 +302,137 @@ a:hover {
   }
 
   .paddingLeft {
+    padding-top: 20px;
     padding-left: 0 !important;
   }
+}
+
+.btn,
+.btn-primary {
+  all: unset;
+}
+
+.button-primary {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 18px;
+  letter-spacing: 2px;
+  min-width: 120px !important;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  background-color: white;
+  color: #000 !important;
+  cursor: pointer;
+  border: 3px solid;
+  padding: 0.25em 0.5em;
+  box-shadow:
+    1px 1px 0px 0px,
+    2px 2px 0px 0px,
+    3px 3px 0px 0px,
+    4px 4px 0px 0px,
+    5px 5px 0px 0px;
+  position: relative;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  transition: background-color 0.5s;
+}
+
+.button-primary:hover {
+  background-color: rgb(230, 230, 230) !important;
+  color: #000;
+  border: 3px solid;
+}
+
+.button-primary:active {
+  background-color: rgb(230, 230, 230) !important;
+  color: #000 !important;
+  border: 3px solid !important;
+  box-shadow: 0px 0px 0px 0px;
+  top: 5px;
+  left: 5px;
+}
+
+.delButton {
+  background-color: rgb(254, 0, 0) !important;
+  transition: background-color 0.5s;
+}
+
+.delButton:hover {
+  border-color: black;
+  background-color: rgb(200, 0, 0) !important;
+}
+
+.delButton:active {
+  background-color: rgb(200, 0, 0) !important;
+  border-color: black !important;
+}
+
+.button-as-link {
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-align: center;
+  background: none;
+  text-transform: uppercase;
+  border: none;
+  padding: 10px 25px 10px 25px;
+}
+
+.button-as-link:hover {
+  color: #d9d9d9 !important;
+  background: none;
+}
+
+.form__group {
+  width: 400px;
+  max-width: 90%;
+}
+
+.form__field {
+  font-family: inherit;
+  width: 100%;
+  border: 0;
+  border-radius: 0;
+  border-bottom: 1px solid black;
+  outline: 0;
+  font-size: 1.3rem;
+  color: #000000;
+  padding: 7px 0 3px 15px;
+  background: transparent;
+  transition: border-color 0.5s;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  letter-spacing: 2px;
+}
+
+.form__label {
+  text-align: left;
+  margin-left: 15px;
+  margin-bottom: 10px;
+  display: block;
+  transition: all 0.2s;
+  min-width: 90%;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.form__field:focus {
+  border-color: #0077b6;
+}
+/* Kun kenttä on täytetty, piilota placeholder ja näkyy label */
+.form__field:not(:placeholder-shown) + .form__label {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0rem);
+}
+
+/* Piilottaa labelin, kun placeholder näkyy */
+.form__field:placeholder-shown + .form__label {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-2rem);
 }

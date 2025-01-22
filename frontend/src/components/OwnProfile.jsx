@@ -7,20 +7,6 @@ import { useParams } from 'react-router-dom'
 import { Link, useNavigate } from 'react-router-dom'
 
 const OwnProfile = () => {
-  /*TODO refactor style to .css file*/
-  const listStyle = {
-    listStyleType: 'none',
-    paddingLeft: 30,
-    marginBottom: 0,
-    paddingBottom: 30,
-  }
-
-  const padding = {
-    padding: 30,
-    paddingLeft: 50,
-    paddingBottom: 50,
-  }
-
   //set dispatch and navigate
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -59,7 +45,7 @@ const OwnProfile = () => {
 
   //show info if user is not logged in
   if (!loggedInUser) {
-    return <div style={padding}>You are not logged in!</div>
+    return <div className="padding">You are not logged in!</div>
   }
 
   //determine if user is looking own profile or not
@@ -67,10 +53,10 @@ const OwnProfile = () => {
 
   // rendering user info screen
   return (
-    <div style={padding}>
+    <div className="padding">
       <h3>{user.name}</h3>
       <h4>{isOwnProfile ? 'You have added blogs:' : 'Added blogs:'}</h4>
-      <ul style={listStyle}>
+      <ul className="listStyle">
         {user.blogs && user.blogs.length === 0 ? (
           <li>No added blogs</li>
         ) : (
