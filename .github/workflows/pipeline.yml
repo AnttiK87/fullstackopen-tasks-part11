@@ -84,7 +84,7 @@ jobs:
           nodetail: true
           title: A new version of Blog application deployed.
 
-          description: To new version `${{ env.tag }}` committed by ${{ github.actor }} click [here](https://full-stack-open-pokedex-oz9x.onrender.com) ✅
+          description: To new version `${{ env.tag }}` committed by ${{ github.actor }} click [here](https://fullstackopen-part11-bloglist-twf2.onrender.com) ✅
           avatar_url: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
           username: GitHub Actions Bot
           color: 0x3bb143
