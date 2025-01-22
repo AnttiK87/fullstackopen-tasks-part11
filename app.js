@@ -1,4 +1,5 @@
-// main structure of this application version 0.0.2
+/* Added ci/cd to this application. so that this web application is tested and deployed 
+to the render after github actions workflow and pullreguest is passed. */
 
 //dependensies
 const config = require('./utils/config')
